@@ -9,12 +9,16 @@
 body {
   background: #f2f2f2;
   box-sizing: border-box;
-  color: black;
+  color: #525252;
   font-family: Inter, sans-serif;
   font-style: normal;
   height: 100vh;
   margin: 0;
   width: 100vw;
+}
+
+img {
+  filter: invert(0%);
 }
 
 .container {
@@ -89,6 +93,7 @@ body {
   position: fixed;
   top: 0px;
   width: 95%;
+  z-index: 3;
 }
 .container .main .header .title {
   color: #26282c;
@@ -99,7 +104,9 @@ body {
 .container .main .header .header-item {
   align-items: center;
   display: flex;
+  gap: 10px;
   justify-content: flex-end;
+  margin: 0 10px 0 0;
   padding: 10px;
   width: 74%;
 }
@@ -112,7 +119,6 @@ body {
   height: 40px;
   justify-content: start;
   padding: 5px 10px;
-  width: 20vw;
 }
 .container .main .header .header-item .searchbar input {
   background: transparent;
@@ -126,7 +132,6 @@ body {
   align-items: center;
   color: #26282c;
   display: flex;
-  margin: 0 10px;
 }
 .container .main .header .header-item .date svg {
   margin: 10px;
@@ -138,13 +143,11 @@ body {
   border: 1px solid #dadddd;
   border-radius: 50%;
   height: 35px;
-  margin: 0 10px;
   padding: 6px;
 }
 .container .main .header .header-item .profile {
   border: 1px solid #dadddd;
   border-radius: 20px;
-  margin: 0 10px;
 }
 .container .main .header .header-item .profile .profile-items {
   align-items: center;
@@ -162,11 +165,42 @@ body {
   margin: 0;
   text-align: right;
 }
+@media (max-width: 768px) {
+  .container .main .searchbar input {
+    background: inherit !important;
+    border: 1px solid #dadddd !important;
+    border-radius: 20px;
+    display: none;
+    padding: 10px;
+    position: absolute;
+    right: 270px;
+    top: 60px;
+  }
+  .container .main .searchbar:hover input {
+    display: block;
+  }
+  .container .main .main-content {
+    flex-direction: column !important;
+  }
+  .container .main .charts-orders {
+    width: 100% !important;
+  }
+  .container .main .stats {
+    width: 100% !important;
+  }
+  .container .main .stats .stats-main {
+    display: flex !important;
+  }
+  .container .main .infos {
+    display: none !important;
+  }
+}
 .container .main .main-content {
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  margin: 6em 2em;
+  justify-content: center;
+  margin: 6em 2em 0;
 }
 .container .main .main-content .charts-orders {
   margin: 0 30px 0 0;
@@ -176,7 +210,6 @@ body {
   background: hsl(0, 0%, 100%);
   border: 1px solid #EDF2F7;
   border-radius: 20px;
-  height: 40%;
   padding: 16px;
   width: 100%;
 }
@@ -201,38 +234,144 @@ body {
 .container .main .main-content .charts-orders .charts .charts-main {
   align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   justify-content: space-between;
+  margin: 10px 0;
 }
 .container .main .main-content .charts-orders .charts .charts-main .ypath {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   gap: 20px;
   justify-content: space-between;
+  width: 100%;
 }
 .container .main .main-content .charts-orders .charts .charts-main .ypath .y-axis {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
   height: 255px;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .y-axis div {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath ._pre_ {
+  overflow: auto;
+}
+@media (min-width: 1480px) {
+  .container .main .main-content .charts-orders .charts .charts-main .ypath ._pre_ {
+    width: 100%;
+  }
+  .container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas {
+    width: 100% !important;
+  }
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas {
+  align-items: flex-start;
+  color: #EAEAEA;
+  display: flex;
+  flex-direction: column;
+  height: 255px;
+  justify-content: space-between;
+  position: relative;
   width: 696px;
+}
+@media (min-width: 1480px) {
+  .container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas hr {
+    width: 100% !important;
+  }
+  .container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars {
+    width: 100% !important;
+  }
 }
 .container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas hr {
   border-style: dashed;
   height: 1px;
   margin: 0;
+  width: 696px;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars {
+  align-items: flex-end;
+  display: flex;
+  height: 253px;
+  justify-content: space-between;
+  position: absolute;
+  width: 696px;
+}
+@media (min-width: 1480px) {
+  .container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .bars {
+    width: 100% !important;
+  }
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars div {
+  background: rgba(52, 202, 165, 0.1019607843);
+  border-radius: 20px 20px 0 0;
+  width: 4.3%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .jan {
+  height: 26.7%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .feb {
+  height: 47.1%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .mar {
+  height: 15.6%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .apr {
+  height: 63.1%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .mei {
+  height: 31.7%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .jun {
+  background: linear-gradient(180deg, #34CAA5 0%, rgba(52, 202, 165, 0) 100%);
+  height: 84.7%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .jul {
+  height: 31.7%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .aug {
+  height: 51.4%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .sep {
+  height: 71.4%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .okt {
+  height: 20%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .nov {
+  height: 67.1%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .ypath .bars-canvas .bars .dec {
+  height: 59.2%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .x-axis {
+  align-items: center;
+  display: flex;
+  gap: 36.5px;
+  justify-content: flex-start;
+  margin: 10px 0 0;
   width: 100%;
+}
+.container .main .main-content .charts-orders .charts .charts-main .x-axis ._jan {
+  margin: 0 0 0 60px;
+}
+@media (min-width: 1480px) {
+  .container .main .main-content .charts-orders .charts .charts-main .x-axis {
+    gap: 0 !important;
+    justify-content: space-between !important;
+  }
 }
 .container .main .main-content .charts-orders .orders {
   background: hsl(0, 0%, 100%);
   border: 1px solid #EDF2F7;
   border-radius: 20px;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 16px;
   width: 100%;
 }
@@ -263,8 +402,8 @@ body {
   width: 70%;
 }
 .container .main .main-content .charts-orders .orders .orders-header .otherss .dd {
-  text-align: start;
-  padding: 0 21px;
+  /**text-align: start;**/
+  padding: 0;
 }
 .container .main .main-content .charts-orders .orders .orders-header .otherss div {
   text-align: center;
@@ -323,7 +462,7 @@ body {
   gap: 10px;
   justify-content: space-between;
   min-width: 240px;
-  padding: 16px;
+  padding: 19px;
 }
 .container .main .main-content .stats .stats-main .orderss ._head, .container .main .main-content .stats .stats-main .refund ._head, .container .main .main-content .stats .stats-main .sales ._head, .container .main .main-content .stats .stats-main .income ._head {
   align-items: center;
@@ -373,7 +512,7 @@ body {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  margin: 30px auto 0;
+  margin: 20px auto 0;
   padding: 16px;
   width: 100%;
 }

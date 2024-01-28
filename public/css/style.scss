@@ -7,12 +7,16 @@
 body{
     background: $bg-color;
     box-sizing: border-box;
-    color: black;
+    color: #525252;
     font-family: Inter, sans-serif;
     font-style: normal;
     height: 100vh;
     margin: 0;
     width: 100vw;
+}
+
+img {
+    filter: invert(0%);
 }
 
 .container{
@@ -87,6 +91,7 @@ body{
             position: fixed;
             top: 0px;
             width: 95%;
+            z-index: 3;
             .title{
                 color: #26282c;
                 font-size: 20px;
@@ -96,7 +101,9 @@ body{
             .header-item{
                 align-items: center;
                 display: flex;
+                gap: 10px;
                 justify-content: flex-end;
+                margin: 0 10px 0 0;
                 padding: 10px;
                 width: 74%;
                 .searchbar{
@@ -108,7 +115,6 @@ body{
                     height: 40px;
                     justify-content: start;
                     padding: 5px 10px;
-                    width: 20vw;
                     input{
                         background: transparent;
                         border: none;
@@ -122,7 +128,6 @@ body{
                     align-items: center;
                     color: #26282c;
                     display: flex;
-                    margin: 0 10px;
                     svg{
                         margin: 10px;
                     }
@@ -134,13 +139,11 @@ body{
                     border: 1px solid #dadddd;
                     border-radius: 50%;
                     height: 35px;
-                    margin: 0 10px;
                     padding: 6px;
                 }
                 .profile{
                     border: 1px solid #dadddd;
                     border-radius: 20px;
-                    margin: 0 10px;
                     .profile-items{
                         align-items: center;
                         display: flex;
@@ -160,11 +163,46 @@ body{
                 }
             }
         }
+        @media (max-width: 768px){
+            .searchbar{
+                input{
+                    background: inherit !important;
+                    border: 1px solid #dadddd !important;
+                    border-radius: 20px;
+                    display: none;
+                    padding: 10px;
+                    position: absolute;
+                    right: 270px;
+                    top: 60px;
+                }
+                &:hover{
+                    input{
+                        display: block;
+                    }
+                }
+            } 
+            .main-content{
+                flex-direction: column !important;
+            }
+            .charts-orders{
+                width: 100% !important;
+            }
+            .stats{
+                width: 100% !important;
+                .stats-main{
+                    display: flex !important;
+                }
+            }
+            .infos{
+                display: none !important;
+            }
+        }
         .main-content{
             border-radius: 10px;
             display: flex;
             flex-direction: row;
-            margin: 6em 2em;
+            justify-content: center;
+            margin: 6em 2em 0;
             .charts-orders{
                 margin: 0 30px 0 0;
                 width: 60%;
@@ -172,7 +210,6 @@ body{
                     background: $White;
                     border: 1px solid #EDF2F7;
                     border-radius: 20px;
-                    height: 40%;
                     padding: 16px;
                     width: 100%;
                     .charts-head{
@@ -196,30 +233,136 @@ body{
                     .charts-main{
                         align-items: center;
                         display: flex;
+                        flex-direction: column;
+                        gap: 10px;
                         justify-content: space-between;
+                        margin: 10px 0;
                         .ypath{
-                            align-items: center;
+                            align-items: flex-start;
                             display: flex;
                             gap: 20px;
                             justify-content: space-between;
+                            width: 100%;
                             .y-axis{
-                                align-items: center;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: space-between;
-                            }
-                            .bars-canvas{
                                 align-items: flex-start;
                                 display: flex;
                                 flex-direction: column;
+                                justify-content: space-between;
+                                gap: 25px;
                                 height: 255px;
+                                div{
+                                    font-size: 12px;
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    line-height: 16px;
+                                }
+                            }
+                            ._pre_{
+                                overflow: auto;
+                            }
+                            @media (min-width: 1480px){
+                                ._pre_{
+                                    width: 100%;
+                                }
+                                .bars-canvas{
+                                    width: 100% !important;
+                                }
+                            }
+                            .bars-canvas{
+                                align-items: flex-start;
+                                color: #EAEAEA;
+                                display: flex;
+                                flex-direction: column;
+                                height: 255px;
+                                justify-content: space-between;
+                                position: relative;
                                 width: 696px;
+                                @media (min-width: 1480px){
+                                    hr{
+                                        width: 100% !important;
+                                    }
+                                    .bars{
+                                        width: 100% !important;
+                                    }
+                                }
                                 hr{
                                     border-style: dashed;
                                     height: 1px;
                                     margin: 0;
-                                    width: 100%;
+                                    width: 696px;
                                 }
+                                .bars{
+                                    align-items: flex-end;
+                                    display: flex;
+                                    height: 253px;
+                                    justify-content: space-between;
+                                    position: absolute;
+                                    width: 696px;
+                                    @media (min-width: 1480px){
+                                        .bars{
+                                            width: 100% !important;
+                                        }
+                                    }
+                                    div{
+                                        background: #34caa51a;
+                                        border-radius: 20px 20px 0 0;
+                                        width: 4.3%;
+                                    }
+                                    .jan{
+                                        height: 26.7%;
+                                    }
+                                    .feb{
+                                        height: 47.1%;
+                                    }
+                                    .mar{
+                                        height: 15.6%;
+                                    }
+                                    .apr{
+                                        height: 63.1%;
+                                    }
+                                    .mei{
+                                        height: 31.7%;
+                                    }
+                                    .jun{
+                                        background: linear-gradient(180deg, #34CAA5 0%, #34caa500 100%);
+                                        height: 84.7%;
+                                    }
+                                    .jul{
+                                        height: 31.7%;
+                                    }
+                                    .aug{
+                                        height: 51.4%;
+                                    }
+                                    .sep{
+                                        height: 71.4%;
+                                    }
+                                    .okt{
+                                        height: 20%;
+                                    }
+                                    .nov{
+                                        height: 67.1%;
+                                    }
+                                    .dec{
+                                        height: 59.2%;
+                                    }
+                                }
+                            }
+                        }
+                        .x-axis{
+                            align-items: center;
+                            display: flex;
+                            gap: 36.5px;
+                            justify-content: flex-start;
+                            margin: 10px 0 0;
+                            width: 100%;
+                            ._jan{
+                                margin: 0 0 0 60px;
+                            }
+                        }
+                        @media (min-width: 1480px){
+                            .x-axis{
+                                gap: 0 !important;
+                                justify-content: space-between !important;
                             }
                         }
                     }
@@ -228,7 +371,7 @@ body{
                     background: $White;
                     border: 1px solid #EDF2F7;
                     border-radius: 20px;
-                    margin: 30px auto;
+                    margin: 20px auto;
                     padding: 16px;
                     width: 100%;
                     .orders-title{
@@ -256,8 +399,8 @@ body{
                             justify-content: space-between;
                             width: 70%;
                             .dd{
-                                text-align: start;
-                                padding: 0 21px;
+                                /**text-align: start;**/
+                                padding: 0;
                             }
                             div{
                                 text-align: center;
@@ -318,7 +461,7 @@ body{
                         gap: 10px;
                         justify-content: space-between;
                         min-width: 240px;
-                        padding: 16px;
+                        padding: 19px;
                         ._head{
                             align-items: center;
                             display: flex;
@@ -372,7 +515,7 @@ body{
                     border-radius: 20px;
                     display: flex;
                     flex-direction: column;
-                    margin: 30px auto 0;
+                    margin: 20px auto 0;
                     padding: 16px;
                     width: 100%;
                     .users-head{
